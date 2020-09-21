@@ -300,7 +300,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. Client record is present in TBM
     
-    * 2a1. User updates the client's  <ins>informations and details (UC: Updating client)<ins/>
+    * 2a1. User updates the client's  <u>informations and details (UC: Updating client)</u>
     
     Use case ends.
 
