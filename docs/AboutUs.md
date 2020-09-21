@@ -37,7 +37,7 @@ You can reach us at the email `university@rocketmail.com`
 [[github](http://github.com/leeenhao)]
 [[portfolio](team/leeenhao.md)]
 
-* Role: In charge of documentation and scheduling
+* Role: In charge of documentation and scheduling/tracking
 * Responsibilities: In charge of defining, assigning, and tracking project tasks as well as
 the quality of various project documents.
 
