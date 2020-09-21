@@ -285,6 +285,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
+**Use case: Adding a client**
+
+**MSS**
+
+1.  User has a new business client
+2.  He checks his TBM application to see if he has the clients details recorded already
+3.  Client is not in the TBM application records
+4.  He adds the client
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. Client record is present in TBM
+    
+    * 2a1. User updates the client's  <ins>informations and details (UC: Updating client)<ins/>
+    
+    Use case ends.
+
 **Use case: Delete a person**
 
 **MSS**
