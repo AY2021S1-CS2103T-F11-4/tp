@@ -5,46 +5,36 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TextArea?>
 
-<StackPane prefHeight="365.0" prefWidth="337.0" styleClass="widget-pane" xmlns="http://javafx.com/javafx/8"
-           xmlns:fx="http://javafx.com/fxml/1">
-    <VBox fx:id="viewBox" prefHeight="301.0" prefWidth="337.0">
-        <children>
-            <StackPane prefHeight="79.0" prefWidth="337.0">
-                <Label fx:id="header" alignment="CENTER" prefHeight="46.0" prefWidth="249.0"
-                       styleClass="widget_header"/>
-            </StackPane>
-            <StackPane prefHeight="50.0" prefWidth="337.0">
-                <Label fx:id="divOne" prefHeight="17.0" prefWidth="285.0" text="Label" styleClass="widget_div"
-                       wrapText="true"/>
-            </StackPane>
-            <StackPane prefHeight="60.0" prefWidth="337.0">
-                <Label fx:id="textOne" prefHeight="17.0" prefWidth="285.0" text="Label" styleClass="widget_text"
-                       wrapText="true"/>
-            </StackPane>
-            <StackPane prefHeight="61.0" prefWidth="337.0">
-                <Label fx:id="divTwo" prefHeight="17.0" prefWidth="286.0" text="Label" styleClass="widget_div"
-                       wrapText="true"/>
-            </StackPane>
-            <StackPane prefHeight="60.0" prefWidth="337.0">
-                <Label fx:id="textTwo" prefHeight="17.0" prefWidth="286.0" text="Label" styleClass="widget_text"
-                       wrapText="true"/>
-            </StackPane>
-            <StackPane prefHeight="58.0" prefWidth="337.0">
-                <Label fx:id="textThree" prefHeight="17.0" prefWidth="284.0" text="Label" styleClass="widget_text"
-                       wrapText="true"/>
-            </StackPane>
-            <StackPane prefHeight="62.0" prefWidth="337.0">
-                <Label fx:id="divThree" prefHeight="17.0" prefWidth="282.0" text="Label" styleClass="widget_div"
-                       wrapText="true"/>
-            </StackPane>
-            <StackPane prefHeight="58.0" prefWidth="337.0">
-                <TextArea fx:id="textFour" prefHeight="17.0" prefWidth="281.0" text="Label" editable="false"
-                          styleClass="notes" wrapText="true"/>
-            </StackPane>
-            <StackPane prefHeight="48.0" prefWidth="337.0">
-                <Label fx:id="footer" alignment="CENTER" prefHeight="17.0" prefWidth="279.0" text="Label"
-                       styleClass="widget_text" wrapText="true"/>
-            </StackPane>
-        </children>
-    </VBox>
+<StackPane prefHeight="365.0" prefWidth="337.0" styleClass="widget-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <VBox fx:id="viewBox" prefHeight="301.0" prefWidth="337.0">
+    <children>
+      <StackPane prefHeight="79.0" prefWidth="337.0">
+        <Label fx:id="header" alignment="CENTER" prefHeight="46.0" prefWidth="249.0" styleClass="widget_header"/>
+      </StackPane>
+      <StackPane prefHeight="50.0" prefWidth="337.0">
+        <Label fx:id="divOne" prefHeight="17.0" prefWidth="285.0" text="Label" styleClass="widget_div" wrapText="true"/>
+      </StackPane>
+      <StackPane prefHeight="60.0" prefWidth="337.0">
+        <Label fx:id="textOne" prefHeight="17.0" prefWidth="285.0" text="Label" styleClass="widget_text" wrapText="true"/>
+      </StackPane>
+      <StackPane prefHeight="61.0" prefWidth="337.0">
+        <Label fx:id="divTwo" prefHeight="17.0" prefWidth="286.0" text="Label" styleClass="widget_div" wrapText="true"/>
+      </StackPane>
+      <StackPane prefHeight="60.0" prefWidth="337.0">
+        <Label fx:id="textTwo" prefHeight="17.0" prefWidth="286.0" text="Label" styleClass="widget_text" wrapText="true"/>
+      </StackPane>
+      <StackPane prefHeight="58.0" prefWidth="337.0">
+        <Label fx:id="textThree" prefHeight="17.0" prefWidth="284.0" text="Label" styleClass="widget_text" wrapText="true"/>
+      </StackPane>
+      <StackPane prefHeight="62.0" prefWidth="337.0">
+        <Label fx:id="divThree" prefHeight="17.0" prefWidth="282.0" text="Label" styleClass="widget_div" wrapText="true"/>
+      </StackPane>
+      <StackPane prefHeight="58.0" prefWidth="337.0">
+        <TextArea fx:id="textFour" prefHeight="17.0" prefWidth="281.0" text="Label" editable="false" styleClass="notes" wrapText="true"/>
+      </StackPane>
+      <StackPane prefHeight="48.0" prefWidth="337.0">
+        <Label fx:id="footer" alignment="CENTER" prefHeight="17.0" prefWidth="279.0" text="Label" styleClass="widget_text" wrapText="true"/>
+      </StackPane>
+      </children>
+   </VBox>
 </StackPane>

@@ -2,7 +2,7 @@ package seedu.address.model.note;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.TypicalClients.ALICE;
 
@@ -13,7 +13,6 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.client.Client;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.ClientBuilder;
@@ -63,33 +62,6 @@ class TagNoteMapTest {
     }
 
     @Test
-    void getUniqueTags_verifyWithNewTag_doesNotThrowExceptionReturnsTrue() throws ParseException {
-        Set<Tag> expectedResult = new HashSet<>();
-        expectedResult.add(new Tag("unprecedentedTag"));
-        List<String> tagNameStrings = new ArrayList<>();
-        tagNameStrings.add("unprecedentedTag");
-        assertDoesNotThrow(() -> this.tagNoteMap.getUniqueTags(tagNameStrings));
-        Set<Tag> actualResult = this.tagNoteMap.getUniqueTags(tagNameStrings);
-        assertEquals(expectedResult, actualResult);
-    }
-
-    // also tests that when a tag doesn't have associated notes then it is removed from tagToNotesMap and uniqueTagsMap
-    @Test
-    void deleteNote_deleteSoleNoteWithSoleTag_clearsTagToNotesMapAndUniqueTagEntriesReturnsTrue() {
-        taggedNote.setTags(tags);
-        Set<Note> expectedNotesSet = new HashSet<>();
-        expectedNotesSet.add(taggedNote);
-        this.client.addClientNote(taggedNote);
-        List<Client> clients = new ArrayList<>();
-        clients.add(client);
-        tagNoteMap.initTagNoteMapFromClients(clients);
-        assertTrue(tagNoteMap.getTagsForNote(taggedNote).equals(tags));
-        assertTrue(tagNoteMap.getNotesForTag(testTag).equals(expectedNotesSet));
-        tagNoteMap.deleteNote(taggedNote);
-        assertFalse(tagNoteMap.getNotesForTag(testTag).equals(expectedNotesSet));
-    }
-
-    @Test
     void getTagsForNote_useNoteWithTwoTags_returnsTrue() {
         Tag tag2 = new Tag("tag2");
         tags.add(tag2);
@@ -111,9 +83,9 @@ class TagNoteMapTest {
         TagNoteMap emptyTagNoteMap = new TagNoteMap();
         TagNoteMap sameObject = this.tagNoteMap;
         Object randomObject = new Object();
-        assertTrue(sameObject.equals(this.tagNoteMap));
-        assertTrue(emptyTagNoteMap.equals(this.tagNoteMap));
-        assertFalse(this.tagNoteMap.equals(randomObject));
+        assertEquals(sameObject, this.tagNoteMap);
+        assertEquals(emptyTagNoteMap, this.tagNoteMap);
+        assertNotEquals(randomObject, this.tagNoteMap);
     }
 
     /*  todo Future test cases:

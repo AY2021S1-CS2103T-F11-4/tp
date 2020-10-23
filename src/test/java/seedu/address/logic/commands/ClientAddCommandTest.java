@@ -210,17 +210,7 @@ public class ClientAddCommandTest {
         }
 
         @Override
-        public void deleteClientNote(Client associatedClient, Note noteToDelete) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ObservableList<Client> getFilteredClientList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ObservableList<Note> getFilteredClientNotesList() {
             throw new AssertionError("This method should not be called.");
         }
 

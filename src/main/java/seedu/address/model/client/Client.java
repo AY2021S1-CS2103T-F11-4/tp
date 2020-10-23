@@ -112,15 +112,6 @@ public class Client {
     }
 
     /**
-     * Deletes a specific client note from associated notes for this client.
-     * @param clientNote the clientNote to be deleted.
-     */
-    public void deleteClientNote(Note clientNote) {
-        requireNonNull(clientNote);
-        this.clientNotes.remove(clientNote);
-    }
-
-    /**
      * Checks whether the client has a given note in collection or not.
      *
      * @param clientNote The note, to be checked if client has it in collection.

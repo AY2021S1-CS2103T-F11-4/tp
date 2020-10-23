@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.ClientAddCommand;
 import seedu.address.logic.commands.ClientDeleteCommand;
@@ -25,7 +24,6 @@ import seedu.address.logic.commands.ClientEditCommand;
 import seedu.address.logic.commands.ClientEditCommand.EditClientDescriptor;
 import seedu.address.logic.commands.ClientFindCommand;
 import seedu.address.logic.commands.ClientNoteAddCommand;
-import seedu.address.logic.commands.ClientNoteDeleteCommand;
 import seedu.address.logic.commands.ClientViewCommand;
 import seedu.address.logic.commands.CountryFilterCommand;
 import seedu.address.logic.commands.CountryNoteCommand;
@@ -169,16 +167,6 @@ public class AddressBookParserTest {
                 parser.parseCommand("client note unknownCommand"));
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () ->
                 parser.parseCommand("client note unknownCommand "));
-    }
-
-    @Test
-    public void parseClientNoteCommands_deleteClientNote_returnsTrue() throws Exception {
-        String validUserInput = "client note delete 1 12";
-        Index validClientIndex = Index.fromOneBased(1);
-        Index validClientNoteIndex = Index.fromOneBased(12);
-        ClientNoteDeleteCommand expectedCommand = new ClientNoteDeleteCommand(validClientIndex, validClientNoteIndex);
-        ClientNoteDeleteCommand actualCommand = (ClientNoteDeleteCommand) parser.parseCommand(validUserInput);
-        assertEquals(expectedCommand, actualCommand);
     }
 
     @Test

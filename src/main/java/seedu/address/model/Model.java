@@ -121,22 +121,9 @@ public interface Model {
     void addClientNote(Client client, Note clientNote);
 
     /**
-     * Deletes a Client Note associated to a particular Client.
-     *
-     * @param associatedClient Client associated to the note to be deleted.
-     * @param noteToDelete     Note to be deleted.
-     */
-    void deleteClientNote(Client associatedClient, Note noteToDelete);
-
-    /**
-     * Returns an unmodifiable view of the filtered client list.
+     * Returns an unmodifiable view of the filtered client list
      */
     ObservableList<Client> getFilteredClientList();
-
-    /**
-     * Returns an unmodifiable view of the filtered client notes list.
-     */
-    ObservableList<Note> getFilteredClientNotesList();
 
     /**
      * Updates the filter of the filtered client list to filter by the given {@code predicate}.
