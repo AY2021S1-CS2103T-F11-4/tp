@@ -7,6 +7,9 @@ import seedu.address.model.client.exceptions.ClientNotFoundException;
 import seedu.address.model.client.exceptions.DuplicateClientException;
 import seedu.address.model.util.SampleDataUtil;
 
+/**
+ * Populates TBM with pre-coded sample clients to provide users/developers a quick way to test TBM's features.
+ */
 public class ClientSampleCommand extends Command {
 
     /** The command word for this command. */

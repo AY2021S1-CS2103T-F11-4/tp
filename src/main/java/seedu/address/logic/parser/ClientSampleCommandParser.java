@@ -6,6 +6,9 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import seedu.address.logic.commands.ClientSampleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * Parses the specific {@code remove} flag and creates a new {@code ClientSampleCommand}.
+ */
 public class ClientSampleCommandParser implements Parser<ClientSampleCommand> {
 
     @Override
