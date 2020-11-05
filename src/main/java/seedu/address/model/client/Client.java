@@ -152,6 +152,8 @@ public class Client {
     /**
      * Returns true if both clients have the same identity and data fields.
      * This defines a stronger notion of equality between two clients.
+     * Equality between two client is defined to be having the same,
+     * name, phone, email, address, country, timezone and contract expiry date.
      */
     @Override
     public boolean equals(Object other) {
