@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -21,12 +22,20 @@ public class JsonTbmManagerStorage implements TbmManagerStorage {
 
     private static final Logger logger = LogsCenter.getLogger(JsonTbmManagerStorage.class);
 
-    private Path filePath;
+    private final Path filePath;
 
+    /**
+     * Constructs a {@code JsonTbmManagerStorage} with an associated {@code Path} for storage.
+     * @param filePath {@code Path} where the {@code TbmManager} is stored as a JSON object.
+     */
     public JsonTbmManagerStorage(Path filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Gets the {@code Path} where the {@code TbmManager} is stored as a JSON object.
+     * @return {@code Path} where {@code TbmManager} is stored.
+     */
     public Path getTbmManagerFilePath() {
         return filePath;
     }
@@ -47,7 +56,7 @@ public class JsonTbmManagerStorage implements TbmManagerStorage {
 
         Optional<JsonSerializableTbmManager> jsonTbmManager = JsonUtil.readJsonFile(
                 filePath, JsonSerializableTbmManager.class);
-        if (!jsonTbmManager.isPresent()) {
+        if (jsonTbmManager.isEmpty()) {
             return Optional.empty();
         }
 
@@ -70,8 +79,7 @@ public class JsonTbmManagerStorage implements TbmManagerStorage {
      * @param filePath location of the data. Cannot be null.
      */
     public void saveTbmManager(ReadOnlyTbmManager tbmManager, Path filePath) throws IOException {
-        requireNonNull(tbmManager);
-        requireNonNull(filePath);
+        requireAllNonNull(tbmManager, filePath);
 
         FileUtil.createIfMissing(filePath);
         JsonUtil.saveJsonFile(new JsonSerializableTbmManager(tbmManager), filePath);

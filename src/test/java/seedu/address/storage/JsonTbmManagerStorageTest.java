@@ -69,20 +69,20 @@ public class JsonTbmManagerStorageTest {
 
         // Save in new file and read back
         jsonTbmManagerStorage.saveTbmManager(original, filePath);
-        ReadOnlyTbmManager readBack = jsonTbmManagerStorage.readTbmManager(filePath).get();
+        ReadOnlyTbmManager readBack = jsonTbmManagerStorage.readTbmManager(filePath).orElse(null);
         assertEquals(original, new TbmManager(readBack));
 
         // Modify data, overwrite exiting file, and read back
         original.addClient(HOON);
         original.removeClient(ALICE);
         jsonTbmManagerStorage.saveTbmManager(original, filePath);
-        readBack = jsonTbmManagerStorage.readTbmManager(filePath).get();
+        readBack = jsonTbmManagerStorage.readTbmManager(filePath).orElse(null);
         assertEquals(original, new TbmManager(readBack));
 
         // Save and read without specifying file path
         original.addClient(IDA);
         jsonTbmManagerStorage.saveTbmManager(original); // file path not specified
-        readBack = jsonTbmManagerStorage.readTbmManager().get(); // file path not specified
+        readBack = jsonTbmManagerStorage.readTbmManager().orElse(null); // file path not specified
         assertEquals(original, new TbmManager(readBack));
 
     }

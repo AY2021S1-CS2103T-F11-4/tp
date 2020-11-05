@@ -33,9 +33,9 @@ public class Note {
     }
 
     /**
-     * Sets the tags of this note to the {@code tags} passed in.
+     * Sets the tags of this {@code Note} to the {@code tags} passed in.
      *
-     * @param tags The tag to be added.
+     * @param tags The set of {@code Tag} objects to be associated with this {@code Note}.
      */
     public void setTags(Set<Tag> tags) {
         requireAllNonNull(tags);

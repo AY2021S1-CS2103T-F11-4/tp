@@ -46,9 +46,9 @@ public class JsonAdaptedNoteTest {
         Set<Tag> associatedTags = getDefaultTagSet();
         taggedClientNote.setTags(associatedTags);
         JsonAdaptedNote jsonAdaptedNote = new JsonAdaptedNote(taggedClientNote);
-        Note deserialisedNote = jsonAdaptedNote.toModelType();
-        assertTrue(deserialisedNote.isClientNote());
-        assertTrue(deserialisedNote.getTags().equals(associatedTags));
+        Note deserializedNote = jsonAdaptedNote.toModelType();
+        assertTrue(deserializedNote.isClientNote());
+        assertTrue(deserializedNote.getTags().equals(associatedTags));
     }
 
     @Test
@@ -65,10 +65,10 @@ public class JsonAdaptedNoteTest {
 
         JsonAdaptedNote jsonAdaptedNote = new JsonAdaptedNote(VALID_NOTE, NULL_COUNTRY_CODE, jsonAdaptedTagSet);
 
-        Note deserialisedNote = jsonAdaptedNote.toModelType();
-        assertTrue(deserialisedNote.isClientNote());
-        assertTrue(deserialisedNote.getTags().equals(associatedTags));
-        assertTrue(deserialisedNote.getNoteContent().equals(VALID_NOTE));
+        Note deserializedNote = jsonAdaptedNote.toModelType();
+        assertTrue(deserializedNote.isClientNote());
+        assertTrue(deserializedNote.getTags().equals(associatedTags));
+        assertTrue(deserializedNote.getNoteContent().equals(VALID_NOTE));
     }
 
     @Test
@@ -77,10 +77,10 @@ public class JsonAdaptedNoteTest {
         Set<JsonAdaptedTag> jsonAdaptedTagSet = getDefaultJsonAdaptedTagSet();
 
         JsonAdaptedNote jsonAdaptedNote = new JsonAdaptedNote(VALID_NOTE, VALID_COUNTRY, jsonAdaptedTagSet);
-        Note deserialisedNote = jsonAdaptedNote.toModelType();
-        assertFalse(deserialisedNote.isClientNote());
-        assertTrue(deserialisedNote.getTags().equals(associatedTags));
-        assertTrue(deserialisedNote.getNoteContent().equals(VALID_NOTE));
+        Note deserializedNote = jsonAdaptedNote.toModelType();
+        assertFalse(deserializedNote.isClientNote());
+        assertTrue(deserializedNote.getTags().equals(associatedTags));
+        assertTrue(deserializedNote.getNoteContent().equals(VALID_NOTE));
     }
 
     @Test
@@ -117,7 +117,7 @@ public class JsonAdaptedNoteTest {
     }
 
     @Test
-    public void toModelType_invalidTags_throwsIllegalValueException() throws IllegalValueException {
+    public void toModelType_invalidTags_throwsIllegalValueException() {
         Set<JsonAdaptedTag> jsonAdaptedTagSet = new HashSet<>();
         jsonAdaptedTagSet.add(new JsonAdaptedTag(INVALID_TAG));
         JsonAdaptedNote jsonAdaptedNote = new JsonAdaptedNote(VALID_NOTE, VALID_COUNTRY, jsonAdaptedTagSet);
@@ -128,11 +128,11 @@ public class JsonAdaptedNoteTest {
     @Test
     public void toModelType_nullTagsCountryNote_returnsCountryNoteWithoutTags() throws IllegalValueException {
         JsonAdaptedNote jsonAdaptedNote = new JsonAdaptedNote(VALID_NOTE, VALID_COUNTRY, null);
-        Note deserialisedNote = jsonAdaptedNote.toModelType();
+        Note deserializedNote = jsonAdaptedNote.toModelType();
         Set<Tag> expectedTags = new HashSet<>();
-        assertFalse(deserialisedNote.isClientNote());
-        assertTrue(deserialisedNote.getTags().equals(expectedTags));
-        assertTrue(deserialisedNote.getNoteContent().equals(VALID_NOTE));
+        assertFalse(deserializedNote.isClientNote());
+        assertTrue(deserializedNote.getTags().equals(expectedTags));
+        assertTrue(deserializedNote.getNoteContent().equals(VALID_NOTE));
     }
 
 }

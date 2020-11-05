@@ -23,7 +23,8 @@ public class JsonSerializableTbmManagerTest {
     @Test
     public void toModelType_typicalClientsFile_success() throws Exception {
         JsonSerializableTbmManager dataFromFile = JsonUtil.readJsonFile(TYPICAL_CLIENTS_FILE,
-                JsonSerializableTbmManager.class).get();
+                JsonSerializableTbmManager.class).orElse(null);
+        assert dataFromFile != null : "null JsonSerializableTbmManager object assigned";
         TbmManager tbmManagerFromFile = dataFromFile.toModelType();
         TbmManager typicalClientsTbmManager = TypicalClients.getTypicalTbmManager();
         assertEquals(tbmManagerFromFile.getClientList(), typicalClientsTbmManager.getClientList());
@@ -32,14 +33,16 @@ public class JsonSerializableTbmManagerTest {
     @Test
     public void toModelType_invalidClientFile_throwsIllegalValueException() throws Exception {
         JsonSerializableTbmManager dataFromFile = JsonUtil.readJsonFile(INVALID_CLIENT_FILE,
-                JsonSerializableTbmManager.class).get();
+                JsonSerializableTbmManager.class).orElse(null);
+        assert dataFromFile != null : "null JsonSerializableTbmManager object assigned";
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 
     @Test
     public void toModelType_duplicateClients_throwsIllegalValueException() throws Exception {
         JsonSerializableTbmManager dataFromFile = JsonUtil.readJsonFile(DUPLICATE_CLIENT_FILE,
-                JsonSerializableTbmManager.class).get();
+                JsonSerializableTbmManager.class).orElse(null);
+        assert dataFromFile != null : "null JsonSerializableTbmManager object assigned";
         assertThrows(IllegalValueException.class, JsonSerializableTbmManager.MESSAGE_DUPLICATE_CLIENT,
                 dataFromFile::toModelType);
     }

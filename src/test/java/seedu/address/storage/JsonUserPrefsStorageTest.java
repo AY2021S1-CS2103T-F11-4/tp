@@ -52,20 +52,20 @@ public class JsonUserPrefsStorageTest {
     @Test
     public void readUserPrefs_fileInOrder_successfullyRead() throws DataConversionException {
         UserPrefs expected = getTypicalUserPrefs();
-        UserPrefs actual = readUserPrefs("TypicalUserPref.json").get();
+        UserPrefs actual = readUserPrefs("TypicalUserPref.json").orElse(null);
         assertEquals(expected, actual);
     }
 
     @Test
     public void readUserPrefs_valuesMissingFromFile_defaultValuesUsed() throws DataConversionException {
-        UserPrefs actual = readUserPrefs("EmptyUserPrefs.json").get();
+        UserPrefs actual = readUserPrefs("EmptyUserPrefs.json").orElse(null);
         assertEquals(new UserPrefs(), actual);
     }
 
     @Test
     public void readUserPrefs_extraValuesInFile_extraValuesIgnored() throws DataConversionException {
         UserPrefs expected = getTypicalUserPrefs();
-        UserPrefs actual = readUserPrefs("ExtraValuesUserPref.json").get();
+        UserPrefs actual = readUserPrefs("ExtraValuesUserPref.json").orElse(null);
 
         assertEquals(expected, actual);
     }
@@ -105,19 +105,19 @@ public class JsonUserPrefsStorageTest {
         UserPrefs original = new UserPrefs();
         original.setGuiSettings(new GuiSettings(1200, 200, 0, 2));
 
-        Path pefsFilePath = testFolder.resolve("TempPrefs.json");
-        JsonUserPrefsStorage jsonUserPrefsStorage = new JsonUserPrefsStorage(pefsFilePath);
-        assertEquals(pefsFilePath, jsonUserPrefsStorage.getUserPrefsFilePath());
+        Path prefsFilepath = testFolder.resolve("TempPrefs.json");
+        JsonUserPrefsStorage jsonUserPrefsStorage = new JsonUserPrefsStorage(prefsFilepath);
+        assertEquals(prefsFilepath, jsonUserPrefsStorage.getUserPrefsFilePath());
 
         //Try writing when the file doesn't exist
         jsonUserPrefsStorage.saveUserPrefs(original);
-        UserPrefs readBack = jsonUserPrefsStorage.readUserPrefs().get();
+        UserPrefs readBack = jsonUserPrefsStorage.readUserPrefs().orElse(null);
         assertEquals(original, readBack);
 
         //Try saving when the file exists
         original.setGuiSettings(new GuiSettings(5, 5, 5, 5));
         jsonUserPrefsStorage.saveUserPrefs(original);
-        readBack = jsonUserPrefsStorage.readUserPrefs().get();
+        readBack = jsonUserPrefsStorage.readUserPrefs().orElse(null);
         assertEquals(original, readBack);
     }
 

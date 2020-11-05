@@ -26,6 +26,9 @@ class JsonAdaptedNote {
     private final String countryCode;
     private final Set<JsonAdaptedTag> tags = new HashSet<>();
 
+    /**
+     * Constructs a {@code JsonAdaptedNote} with the given {@code contents, countryCode, tags} for Jackson to use.
+     */
     @JsonCreator
     public JsonAdaptedNote(@JsonProperty("contents") String contents, @JsonProperty("countryCode") String countryCode,
             @JsonProperty("noteTags") Set<JsonAdaptedTag> tags) {
@@ -43,7 +46,8 @@ class JsonAdaptedNote {
      */
     public JsonAdaptedNote(Note note) {
         this.contents = note.getNoteContent();
-        this.tags.addAll(note.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toSet()));
+        Set<JsonAdaptedTag> tagSet = note.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toSet());
+        this.tags.addAll(tagSet);
         if (note.isClientNote()) {
             this.countryCode = NULL_COUNTRY_CODE;
         } else {
@@ -52,9 +56,9 @@ class JsonAdaptedNote {
     }
 
     /**
-     * Returns whether this json note represents a client or country note.
+     * Returns whether this {@code JsonAdaptedNote} represents a client note or country note.
      *
-     * @return True if this json note represents a client note.
+     * @return True if this {@code JsonAdaptedNote} represents a client note.
      */
     public boolean isClientNote() {
         return countryCode.equals(NULL_COUNTRY_CODE);

@@ -44,7 +44,7 @@ public class StorageManagerTest {
         UserPrefs original = new UserPrefs();
         original.setGuiSettings(new GuiSettings(300, 600, 4, 6));
         storageManager.saveUserPrefs(original);
-        UserPrefs retrieved = storageManager.readUserPrefs().get();
+        UserPrefs retrieved = storageManager.readUserPrefs().orElse(null);
         assertEquals(original, retrieved);
     }
 
@@ -57,7 +57,7 @@ public class StorageManagerTest {
          */
         TbmManager original = getTypicalTbmManager();
         storageManager.saveTbmManager(original);
-        ReadOnlyTbmManager retrieved = storageManager.readTbmManager().get();
+        ReadOnlyTbmManager retrieved = storageManager.readTbmManager().orElse(null);
         assertEquals(original, new TbmManager(retrieved));
     }
 

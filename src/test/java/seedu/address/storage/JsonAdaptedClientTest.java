@@ -179,7 +179,7 @@ public class JsonAdaptedClientTest {
     public void toModelType_emptyContractExpiryDate_doesNotThrowException() {
         JsonAdaptedClient client = new JsonAdaptedClient(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
                 VALID_COUNTRY, VALID_TIMEZONE, "", VALID_LAST_MODIFIED_INSTANT, clientNotes);
-        assertDoesNotThrow(() -> client.toModelType());
+        assertDoesNotThrow(client::toModelType);
     }
 
     @Test

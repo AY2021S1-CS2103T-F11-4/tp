@@ -17,8 +17,8 @@ import seedu.address.model.UserPrefs;
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private TbmManagerStorage tbmManagerStorage;
-    private UserPrefsStorage userPrefsStorage;
+    private final TbmManagerStorage tbmManagerStorage;
+    private final UserPrefsStorage userPrefsStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code TbmManagerStorage} and {@code UserPrefStorage}.

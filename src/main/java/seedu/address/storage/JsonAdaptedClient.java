@@ -88,7 +88,7 @@ class JsonAdaptedClient {
         for (JsonAdaptedNote note : this.clientNotes) {
             clientNotes.add(note.toModelType());
         }
-
+        //================  checks that all required fields are non-null and valid: =============================
         if (name == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
@@ -147,24 +147,28 @@ class JsonAdaptedClient {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, ContractExpiryDate.class.getSimpleName()));
         }
-        // It's possible for contractExpiryDate to have an empty String as a value, which would indicate
-        // the client has no contractExpiryDate set, and {@code ParserUtil.parseContractExpiryDate} will
-        // parse it into
-        // a {@code ContractExpiryDate.NULL_DATE}
+        /*
+         * It's possible for {@code contractExpiryDate} to have an empty String as a value, which would indicate
+         * the client has no contractExpiryDate set, and {@code ParserUtil.parseContractExpiryDate} will
+         * parse it into a {@code ContractExpiryDate.NULL_DATE}
+         */
         if (!contractExpiryDate.isEmpty() && !ContractExpiryDate.isValidDate(contractExpiryDate)) {
             throw new IllegalValueException(ContractExpiryDate.MESSAGE_CONSTRAINTS);
         }
         final ContractExpiryDate modelContractExpiryContractExpiryDate =
                 ParserUtil.parseContractExpiryDate(contractExpiryDate);
-        // Does not throw an exception if lastModifiedInstant is missing/invalid due to corruption of data.
-        // This field is merely metadata for us and is not significant enough to discard client's data due
-        // to this field being missing.
+        /*
+         * Does not throw an exception if lastModifiedInstant is missing/invalid due to corruption of data.
+         * This field is merely metadata for us and is not significant enough to discard client's data due
+         * to this field being missing.
+         */
         LastModifiedInstant modelLastModifiedInstant;
         if (lastModifiedInstant == null) {
             modelLastModifiedInstant = new LastModifiedInstant();
         } else {
             modelLastModifiedInstant = new LastModifiedInstant(lastModifiedInstant);
         }
+        // =============================================================================================
 
         Client modelClient = new Client(modelName, modelPhone, modelEmail, modelAddress, modelCountry, modelTimezone,
                     modelContractExpiryContractExpiryDate, modelLastModifiedInstant);

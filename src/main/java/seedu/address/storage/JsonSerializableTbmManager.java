@@ -27,7 +27,8 @@ class JsonSerializableTbmManager {
     private final List<JsonAdaptedNote> countryNotes = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableTbmManager} with the given clients.
+     * Constructs a {@code JsonSerializableTbmManager} with the given {@code clients} and {@code countryNotes} for
+     * Jackson to use.
      */
     @JsonCreator
     public JsonSerializableTbmManager(@JsonProperty("clients") List<JsonAdaptedClient> clients,
@@ -42,9 +43,12 @@ class JsonSerializableTbmManager {
      * @param source future changes to this will not affect the created {@code JsonSerializableTbmManager}.
      */
     public JsonSerializableTbmManager(ReadOnlyTbmManager source) {
-        clients.addAll(source.getClientList().stream().map(JsonAdaptedClient::new).collect(Collectors.toList()));
-        countryNotes.addAll(source.getCountryNoteList().stream().map(JsonAdaptedNote::new)
-                .collect(Collectors.toList()));
+        List<JsonAdaptedClient> clientsList =
+                source.getClientList().stream().map(JsonAdaptedClient::new).collect(Collectors.toList());
+        List<JsonAdaptedNote> notesList = source.getCountryNoteList().stream().map(JsonAdaptedNote::new)
+                .collect(Collectors.toList());
+        clients.addAll(clientsList);
+        countryNotes.addAll(notesList);
     }
 
     /**
@@ -63,7 +67,8 @@ class JsonSerializableTbmManager {
         }
         for (JsonAdaptedNote jsonAdaptedCountryNote : countryNotes) {
             Note modelNote = jsonAdaptedCountryNote.toModelType();
-            assert !modelNote.isClientNote(); // client notes are stored inside client only
+            // since client notes are stored inside client only
+            assert !modelNote.isClientNote() : "converting a non-country note into a country note";
             tbmManager.addCountryNote((CountryNote) modelNote);
         }
         return tbmManager;
