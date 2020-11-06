@@ -9,7 +9,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.note.CountryNote;
 
 /**
- * A high-level class responsible for mapping ISO3166 countries to countryNotes.
+ * A high-level class that is responsible for mapping ISO3166 countries to countryNotes.
  */
 public class CountryNotesManager {
 
@@ -34,8 +34,8 @@ public class CountryNotesManager {
      * @param countryNote The country note to be added.
      */
     public void addCountryNote(CountryNote countryNote) {
-        // should always be a valid country
-        assert CountryCodeVerifier.isValidCountryCode(countryNote.getCountry().getCountryCode());
+        assert CountryCodeVerifier.isValidCountryCode(countryNote.getCountry().getCountryCode())
+                : "The country note to be added is associated with an invalid country";
         requireNonNull(countryNote);
 
         if (!hasCountryNote(countryNote)) {
@@ -58,8 +58,8 @@ public class CountryNotesManager {
      * @param countryNoteToDelete The country note to be deleted.
      */
     public void deleteCountryNote(CountryNote countryNoteToDelete) {
-        // should always be a valid country
-        assert CountryCodeVerifier.isValidCountryCode(countryNoteToDelete.getCountry().getCountryCode());
+        assert CountryCodeVerifier.isValidCountryCode(countryNoteToDelete.getCountry().getCountryCode())
+                : "The country note to be deleted is associated with an invalid country";
         requireNonNull(countryNoteToDelete);
         assert hasCountryNote(countryNoteToDelete);
 
@@ -79,7 +79,7 @@ public class CountryNotesManager {
     }
 
     /**
-     * Clears all country notes.
+     * Clears all country notes in the CountryNotesManager.
      */
     public void clear() {
         internalCountryNoteList.clear();

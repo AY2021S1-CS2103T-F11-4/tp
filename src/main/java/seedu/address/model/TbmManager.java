@@ -156,7 +156,6 @@ public class TbmManager implements ReadOnlyTbmManager {
     @Override
     public String toString() {
         return clients.asUnmodifiableObservableList().size() + " clients";
-        // TODO: refine later
     }
 
     @Override

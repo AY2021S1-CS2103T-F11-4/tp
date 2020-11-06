@@ -193,11 +193,11 @@ It implements the following operations:
 * `CountryNotesManager#addCountryNote(CountryNote countryNote)`  — Adds the given `countryNote` to the internal `ObservableList<CountryNote>`.
 * `CountryNotesManager#deleteCountryNote(CountryNote countryNote)`  — Deletes the given `countryNote` from the internal `ObservableList<CountryNote>`.
 
-The following class diagram illustrates how the relevant classes in the `seedu.address.model` package are related to `CountryNote`.
+The following class diagram illustrates how the relevant classes in the `Model` component are related to `CountryNote`.
 
 ![Country Class Diagram](images/CountryClass.png)
 
-Given below is a sequence diagram that shows how the `country note add` command works.
+Given below is a sequence diagram that shows how the `country note add` command works within the `Logic` component.
 
 For brevity, the full command `country note add c/COUNTRY_CODE nt/NOTE_STRING` will be substituted by `country note add`.
 
@@ -206,10 +206,23 @@ Hence, `CountryNoteAddCommand` stores a `CountryNote` object. For brevity, the a
 
 ![Country Note Add Sequence Diagram](images/CountryNoteAddSeqDiag.png)
 
-### Suggesting contacts
+### Switching between displaying the Country Note Panel and displaying the Client View
 
 #### Implementation
 
+The mechanism to switch between displaying the Country Note Panel and displaying the Client View is facilitated by the state of the `CommandResult` after executing the user command.
+
+`CommandResult` implements the following operations that are relevant to the Display Panel: 
+* `CommandResult#shouldDisplayClient()` — Returns true if the UI should display the client view, otherwise returns false.
+* `CommandResult#shouldDisplayCountryNote()` — Returns true if the UI should display the country notes view, otherwise returns false.
+
+The following activity diagram illustrates what happens to the Display Panel when the user inputs a command.  
+
+![Switching Country Note Panel and Client View](images/CountryNotePanelClientViewActDiag.png)
+
+### Suggesting contacts
+
+#### Implementation
 
 The suggestion mechanism is facilitated by `filteredClients` in `ModelManager`. It is an instance of `javafx.collections.transformation.FilteredList<Client>`. It implements the following relevant operations:
 * `FilteredList<Client>#setPredicate(Predicate<? super Client> p)` — Filters out any clients that do not match the predicate in the list.

@@ -82,6 +82,11 @@ public class UniqueClientList implements Iterable<Client> {
         }
     }
 
+    /**
+     * Replaces the contents of this list with the contents from the given {@code replacement}.
+     *
+     * @param replacement The UniqueClientList that replaces the current contents of this list.
+     */
     public void setClients(UniqueClientList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

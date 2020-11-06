@@ -295,13 +295,4 @@ public class ModelManagerTest {
         modelManager.setCountryNotesListPanelIsVisible(false);
         assertFalse(modelManager.getCountryNotesListPanelIsVisible());
     }
-
-    /* todo future tests:
-     *  run coverage for model manager test and see what's missing:
-     * 1. setClient
-     * 2. widgetContent setter and gettter
-     * 3. getFilteredClientNotesList
-     *
-     * */
-
 }

@@ -210,7 +210,6 @@ public class ModelManager implements Model {
     @Override
     public void initialiseTagNoteMap() {
         this.tagNoteMap.initTagNoteMapFromClients(this.tbmManager.getClientList());
-        // todo: initialiseTagNoteMap probably has to be changed to use TbmManager#getNoteList()
         this.tagNoteMap.initTagNoteMapFromCountryNotes(new ArrayList<>(this.tbmManager.getCountryNoteList()));
     }
 
@@ -241,7 +240,6 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Note> getSortedFilteredClientNotesList() {
-        // todo: depends on UI display of client notes and their index
         List<Note> clientNotes = new ArrayList<>();
         for (Client client : getSortedFilteredClientList()) {
             clientNotes.addAll(client.getClientNotesAsUnmodifiableList());

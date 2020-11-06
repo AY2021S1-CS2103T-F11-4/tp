@@ -10,7 +10,7 @@ import seedu.address.model.country.Country;
 import seedu.address.model.tag.Tag;
 
 /**
- * Representation of a country note.
+ * The class that models a country note.
  */
 public class CountryNote extends Note {
 

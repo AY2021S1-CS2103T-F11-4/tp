@@ -3,48 +3,34 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":MainParser" as MainParser LOGIC_COLOR
 participant "c : CountryNoteAddCommand" as CountryNoteAddCommand LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
-participant ":AddressBook" as AddressBook MODEL_COLOR
-participant ":CountryNotesManager" as CountryNotesManager MODEL_COLOR
 end box
 [-> LogicManager : execute(country note add)
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand(country note add)
-activate AddressBookParser
+LogicManager -> MainParser : parseCommand(country note add)
+activate MainParser
 
 create CountryNoteAddCommand
-AddressBookParser -> CountryNoteAddCommand
+MainParser -> CountryNoteAddCommand
 activate CountryNoteAddCommand
 
-CountryNoteAddCommand --> AddressBookParser
+CountryNoteAddCommand --> MainParser
 deactivate CountryNoteAddCommand
 
-AddressBookParser --> LogicManager : c
-deactivate AddressBookParser
+MainParser --> LogicManager : c
+deactivate MainParser
 
 LogicManager -> CountryNoteAddCommand : execute()
 activate CountryNoteAddCommand
 
 CountryNoteAddCommand -> Model : addCountryNote(countryNote)
 activate Model
-
-Model -> AddressBook : addCountryNote(countryNote)
-activate AddressBook
-
-AddressBook -> CountryNotesManager : addCountryNote(countryNote)
-activate CountryNotesManager
-
-CountryNotesManager --> AddressBook
-deactivate CountryNotesManager
-
-AddressBook --> Model
-deactivate AddressBook
 
 Model --> CountryNoteAddCommand
 deactivate Model

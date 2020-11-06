@@ -9,7 +9,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Phone {
 
-
     public static final String MESSAGE_CONSTRAINTS =
             "Phone numbers, excluding the country code, should have a min of 3 digits and a max of 12 digits. If a "
                     + "country code is included, a maximum of 15 digits in total may be used (maximum 3 "

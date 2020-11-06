@@ -3,8 +3,8 @@ package seedu.address.model.country;
 import java.util.Locale;
 
 /**
- * A representation of a Country that can be identified by a 2-letter ISO3166 country-code or by its country
- * name. It contains a list of country notes.
+ * A representation of a Country that is identified by a 2-letter ISO3166 country-code.
+ * It contains a list of country notes.
  */
 public class Country implements Comparable<Country> {
 
