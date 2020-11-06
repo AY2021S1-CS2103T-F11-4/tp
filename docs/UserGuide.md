@@ -329,6 +329,24 @@ Notes:
 3. Apprehensive of resigning contract [tag: meeting]
 ```
 
+### Sample clients: `client sample`
+
+Populates the application with pre-coded sample clients. Or removes all sample clients from the applications if they were previously added.
+
+Format: `client sample [remove]`
+
+Examples:
+
+* Command: `client sample`
+
+    Adds all sample clients to the application.
+
+* Command: `client sample remove`
+
+    Removes all sample clients from the application.
+
+Format
+
 ### Filtering clients by country: `country filter`
 
 Filters the list of clients by the specified country.
